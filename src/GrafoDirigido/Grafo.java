@@ -1,6 +1,5 @@
 package GrafoDirigido;
 
-
 import javax.swing.*;
 import java.util.LinkedList;
 
@@ -213,8 +212,24 @@ public class Grafo {
         return c;
     }
 
+    public void pesos(JTextArea ta) {
+        int i = 0;
+        Vertice v;
+        float s = 0;
+        while (i < LVertices.dim()) {
+            v = (Vertice) LVertices.getElem(i);
+            int j = 0;
+            Arco a;
+            while (j < v.LArcos.dim()) {
+                a = (Arco) v.LArcos.getElem(j);
+                ta.append(v.getNombre() + "->" + a.getNombreVertD() + ": " + a.getCosto() + '\n');
+                s = s + a.getCosto();
+                j++;
+            }
+            i++;
+        }
+        ta.append("Peso del grafo: " + s);
+    }
 }
-
-
 
 //end class
